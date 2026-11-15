@@ -89,10 +89,12 @@ else
   mkdir -p "$DIST"
   gh run download "$RUN_ID" --repo "$SLUG" --dir "$DIST" \
     || die "artifact download failed"
-  # Flatten the per-OS subdirectories.
-  find "$DIST" -mindepth 2 -type f -exec mv {} "$DIST/" \; 2>/dev/null || true
-  find "$DIST" -mindepth 1 -type d -empty -delete 2>/dev/null || true
 fi
+
+# Flatten per-OS subdirectories, whether the artifacts came from CI or a local
+# build directory.
+find "$DIST" -mindepth 2 -type f -exec mv {} "$DIST/" \; 2>/dev/null || true
+find "$DIST" -mindepth 1 -type d -empty -delete 2>/dev/null || true
 
 FILES=()
 for f in "$DIST"/*.dmg "$DIST"/*.tar.gz "$DIST"/*.zip "$DIST"/*.AppImage "$DIST"/*.deb "$DIST"/*setup.exe; do
