@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GODsend PS5 - console manager for PlayStation 5</title>
+<meta name="description" content="Manage a jailbroken PS5 over FTP: installed library, payloads, virtual controller, downloads, conversions and homebrew, in one desktop app.">
+<meta property="og:title" content="GODsend PS5">
+<meta property="og:description" content="Manage a jailbroken PS5 over FTP from one window.">
+<meta property="og:image" content="icon.png">
+<link rel="icon" href="icon.png">
+<style>
+  :root {
+    --ink: #04060c; --surface: rgba(16,20,34,.72); --line: rgba(255,255,255,.07);
+    --text: #eef2fb; --dim: #a5b0c7; --faint: #7b869f;
+    --laser: #6d8bff; --laser-2: #56e8f5;
+    --grad: linear-gradient(112deg,#56e8f5,#6d8bff 52%,#8678ff);
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --sans: "Chakra Petch", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ink); color: var(--text); font-family: var(--sans);
+    line-height: 1.55;
+    background-image:
+      radial-gradient(60rem 40rem at 85% -10%, rgba(109,139,255,.16), transparent 60%),
+      radial-gradient(50rem 30rem at 5% 10%, rgba(86,232,245,.10), transparent 60%),
+      radial-gradient(40rem 30rem at 50% 110%, rgba(242,192,120,.07), transparent 60%);
+  }
+  a { color: var(--laser-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px 80px; }
+  header { display: flex; align-items: center; gap: 12px; padding: 26px 0; }
+  header img { width: 34px; height: 34px; object-fit: contain; }
+  header .name { font-weight: 700; letter-spacing: .02em; }
+  header .grow { flex: 1; }
+  nav a { color: var(--dim); font-size: 14px; margin-left: 18px; }
+  .hero { padding: 52px 0 10px; }
+  .eyebrow { font: 11px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--laser-2); }
+  h1 { font-size: clamp(38px, 6.5vw, 68px); line-height: 1.04; letter-spacing: -.02em; margin: 14px 0 16px; }
+  .laser { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { max-width: 700px; color: var(--dim); font-size: 17px; }
+  .cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 26px 0 18px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 11px 16px; font-weight: 600; }
+  .btn:hover { border-color: rgba(109,139,255,.5); text-decoration: none; }
+  .btn.primary { background: var(--grad); color: #05070c; border: none; box-shadow: 0 12px 34px -14px rgba(109,139,255,.65); }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font: 12px var(--mono); color: var(--dim); }
+  .chip .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--laser-2); box-shadow: 0 0 8px var(--laser-2); }
+  h2 { font-size: 24px; margin: 56px 0 6px; }
+  .screens { margin-top: 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .screens img { width: 100%; border-radius: 16px; border: 1px solid var(--line); display: block; box-shadow: 0 30px 70px -50px #000; }
+  .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 6px; }
+  .downloads .btn { font-size: 14px; }
+  .meta { color: var(--faint); font: 12px var(--mono); }
+  .sub { color: var(--faint); font-size: 14px; margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+  .grid article { border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 18px; }
+  .grid h3 { margin: 0 0 6px; font-size: 16px; }
+  .grid p { margin: 0; color: var(--dim); font-size: 14px; }
+  code, pre { font-family: var(--mono); font-size: 13px; }
+  pre { background: rgba(8,11,20,.8); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; color: var(--dim); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  th { font: 11px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; display: flex; gap: 12px; flex-wrap: wrap; }
+  footer .grow { flex: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon.png" alt="">
+    <span class="name">GODsend PS5</span>
+    <span class="grow"></span>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+      <a href="#payloads">Payloads</a>
+      <a href="#build">Build</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">JAILBROKEN PLAYSTATION 5</div>
+    <h1>Your PS5,<br><span class="laser">on your desktop.</span></h1>
+    <p class="lead">
+      Connect over FTP, see the installed library, send payloads to elfldr,
+      drive the console with a virtual controller, download games and homebrew,
+      convert what needs converting, and install everything back. Same Rust and
+      Tauri stack as GODsend PSP.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#build">Build from source</a>
+      <a class="btn" href="https://github.com/ghostyshell/godsend-ps5">Repository</a>
+    </div>
+    <div class="chips">
+      <span class="chip"><span class="dot"></span>FTP on 2121 or 1337</span>
+      <span class="chip"><span class="dot"></span>macOS, Windows, Linux</span>
+      <span class="chip"><span class="dot"></span>Fake packages, exfat and ffpkg images</span>
+      <span class="chip"><span class="dot"></span>Ghostpad virtual controller</span>
+    </div>
+  </section>
+
+  <section class="screens" aria-label="Screenshots">
+    <img src="site-home.png" alt="Console overview with FTP, etaHEN, Ghostpad and elfldr status">
+    <img src="site-library.png" alt="Installed library with apps, images and packages">
+    <img src="site-controller.png" alt="Virtual controller with d-pad, face buttons and combos">
+    <img src="site-payloads.png" alt="Payload catalogue with send buttons">
+    <img src="site-devices.png" alt="Console list with service ports and discovery">
+    <img src="site-convert.png" alt="Conversion page with inspect and actions">
+  </section>
+
+  <h2 id="download">Download</h2>
+  <p class="sub">GoFile is the primary host and file.kiwi is the encrypted backup.</p>
+  <div class="downloads" id="latest-downloads" aria-live="polite">
+    <span class="meta">Loading builds...</span>
+  </div>
+  <p class="meta" id="latest-version"></p>
+
+  <h2 id="features">Everything in one window</h2>
+  <p class="sub">The parts of managing a jailbroken PS5 that usually mean a file manager, a payload sender and a spreadsheet.</p>
+  <div class="grid">
+    <article><h3>Console control</h3><p>Probe FTP on 2121 and 1337, read etaHEN, confirm Ghostpad, elfldr and PKG Manager, and switch the active console.</p></article>
+    <article><h3>Library</h3><p>Installed apps from appmeta, game images and folder dumps from the homebrew folders, and packages waiting to install. PARAM.SFO titles, icons, delete with confirmation.</p></article>
+    <article><h3>Virtual controller</h3><p>A real on-screen DualSense over the Ghostpad payload: press and hold, keyboard mapping, combos, macros and stick directions.</p></article>
+    <article><h3>Payloads</h3><p>The ps5-payloads catalogue fetched at runtime, then sent straight to elfldr. Local ELF and BIN files too.</p></article>
+    <article><h3>Downloads</h3><p>Game index and Internet Archive search, aria2c when installed, a cancellable job queue.</p></article>
+    <article><h3>Install pipeline</h3><p>PKG into the package queue, images and folder dumps into the homebrew folder for ShadowMount+, ZIP unpacking, FAT32 splitting on USB.</p></article>
+    <article><h3>Conversions</h3><p>Folder to ISO with Joliet and multi-extent, ISO extraction, ZIP pack and unpack, split and merge. Image formats are inspected, not rewritten.</p></article>
+    <article><h3>Files</h3><p>Two panes, local and console, with upload, download, folders and delete, all reporting into the job queue.</p></article>
+  </div>
+
+  <h2 id="payloads">Payloads come from the scene, not from a bake-in</h2>
+  <p class="sub">The list refreshes from the public mirror, so new builds appear without an app release.</p>
+  <p class="lead" style="font-size:15px">
+    elfldr listens on 9021, ftpsrv on 2121, etaHEN's FTP server on 1337 and the
+    Ghostpad controller on 6967. GODsend PS5 probes all of them and tells you
+    which piece is missing instead of failing silently.
+  </p>
+
+  <h2 id="build">Build</h2>
+  <pre>cargo test --workspace
+npm --prefix app install
+npm --prefix app run build
+npm --prefix app run tauri build</pre>
+  <p class="sub">The CLI: <code>cargo build --release -p godsend-ps5-cli</code>, then <code>godsend-ps5 --help</code>.</p>
+
+  <h2>Requirements</h2>
+  <table>
+    <tr><th>Need</th><th>Why</th></tr>
+    <tr><td>A jailbroken PS5 with FTP</td><td>Every file operation. ftpsrv or etaHEN includes a server.</td></tr>
+    <tr><td>elfldr on 9021</td><td>Sending payloads. Without it, package and image uploads still work.</td></tr>
+    <tr><td>Ghostpad on 6967</td><td>The virtual controller. Everything else works without it.</td></tr>
+    <tr><td>ShadowMount+ (optional)</td><td>Mounts the images dropped into the homebrew folder.</td></tr>
+    <tr><td>aria2c (optional)</td><td>Multi-connection downloads; without it downloads use one connection.</td></tr>
+    <tr><td>Real-Debrid or TorBox keys (optional)</td><td>Resolve debrid links. Internet Archive needs neither.</td></tr>
+  </table>
+
+  <footer>
+    <span>GODsend PS5</span>
+    <span class="grow"></span>
+    <span>MIT licensed</span>
+    <span>Not affiliated with Sony</span>
+  </footer>
+</div>
+<script>
+  fetch(`downloads.json?v=${Date.now()}`)
+    .then((response) => (response.ok ? response.json() : Promise.reject()))
+    .then((data) => {
+      const wrap = document.getElementById("latest-downloads");
+      if (!wrap || !Array.isArray(data.artifacts) || data.artifacts.length === 0) return;
+      wrap.innerHTML = "";
+      for (const artifact of data.artifacts) {
+        const link = document.createElement("a");
+        link.className = "btn";
+        link.href = artifact.gofile || artifact.kiwi || "#";
+        link.textContent = artifact.label + (artifact.size ? " - " + artifact.size : "");
+        wrap.appendChild(link);
+      }
+      const version = document.getElementById("latest-version");
+      if (version) version.textContent = "v" + data.version + " - updated " + data.updated;
+    })
+    .catch(() => {
+      const wrap = document.getElementById("latest-downloads");
+      if (wrap) wrap.innerHTML = '<span class="meta">Builds are published with each release.</span>';
+    });
+</script>
+</body>
+</html>
