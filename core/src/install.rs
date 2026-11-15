@@ -128,13 +128,17 @@ pub fn push_file(
     if remote_dir.starts_with("/mnt/") && split_bytes > 0 && size > split_bytes {
         ctx.message(format!("splitting {name} for FAT32"));
         let parts = split::split(local, split_bytes, ctx)?;
-        for part in &parts {
+        let mut first = target.clone();
+        for (index, part) in parts.iter().enumerate() {
             let part_name = part.file_name().unwrap_or_default().to_string_lossy();
             let remote = format!("{}/{}", remote_dir.trim_end_matches('/'), part_name);
+            if index == 0 {
+                first = remote.clone();
+            }
             ftp::upload(conn, part, &remote, ctx)?;
             let _ = std::fs::remove_file(part);
         }
-        return Ok(target);
+        return Ok(first);
     }
     ftp::upload(conn, local, &target, ctx)?;
     Ok(target)
@@ -437,6 +441,45 @@ mod tests {
             assert_eq!(classify(&dir.join(name)), kind, "{name}");
         }
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn a_flat_zip_is_installed_under_the_archive_name() {
+        let base = std::env::temp_dir().join(format!("godsend-ps5-flat-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&base);
+        std::fs::create_dir_all(base.join("src/sce_sys")).unwrap();
+        std::fs::write(base.join("src/sce_sys/PARAM.SFO"), b"\0PSFfake").unwrap();
+        let archive = base.join("My Dump.zip");
+        let file = std::fs::File::create(&archive).unwrap();
+        let mut zip = zip::ZipWriter::new(file);
+        let options = zip::write::SimpleFileOptions::default();
+        zip.start_file("sce_sys/PARAM.SFO", options).unwrap();
+        use std::io::Write;
+        zip.write_all(b"\0PSFfake").unwrap();
+        zip.finish().unwrap();
+
+        let manager = crate::transfer::JobManager::new();
+        let src = archive.clone();
+        let (tx, rx) = std::sync::mpsc::channel();
+        manager.spawn(
+            "test",
+            "unzip",
+            |_| {},
+            move |ctx| {
+                let unpacked = unpack_zip(&src, ctx)?;
+                let _ = tx.send(unpacked);
+                Ok(())
+            },
+        );
+        let unpacked = rx
+            .recv_timeout(std::time::Duration::from_secs(5))
+            .expect("unpacked");
+        assert_eq!(
+            unpacked.source.file_name().unwrap().to_string_lossy(),
+            "My Dump"
+        );
+        let _ = std::fs::remove_dir_all(&unpacked.temp_root);
+        let _ = std::fs::remove_dir_all(&base);
     }
 
     #[test]

@@ -365,10 +365,20 @@ pub fn icon_bytes(host: &Host, icon_path: &str) -> Option<Vec<u8>> {
     if let Ok(bytes) = std::fs::read(&cache) {
         return Some(bytes);
     }
+    let miss = cache.with_extension("miss");
+    if miss.exists() {
+        return None;
+    }
     let mut conn = ftp::connect(host).ok()?;
     let bytes = ftp::read_head(&mut conn, icon_path, 2 * 1024 * 1024).ok()?;
     let _ = conn.quit();
     if bytes.is_empty() {
+        // A missing icon is a stable answer; remember it. A connection failure
+        // returns above without touching the cache.
+        if let Some(parent) = miss.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+        let _ = std::fs::write(&miss, b"");
         return None;
     }
     if let Some(parent) = cache.parent() {
