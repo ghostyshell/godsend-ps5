@@ -482,51 +482,82 @@ fn sends_a_payload_to_elfldr() {
     assert_eq!(&loader.received.lock().unwrap()[..4], b"\x7fELF");
 }
 
+fn frame_mask(frame: &[u8; 16]) -> u32 {
+    u32::from_be_bytes([frame[4], frame[5], frame[6], frame[7]])
+}
+
+/// Poll frames received after `since` for one that matches. The sender thread
+/// and the fake server are both scheduled independently, so a fixed sleep is
+/// flaky on a loaded CI runner.
+fn wait_for_frame(
+    pad: &FakePad,
+    since: usize,
+    within: Duration,
+    pred: impl Fn(&[u8; 16]) -> bool,
+) -> bool {
+    let deadline = std::time::Instant::now() + within;
+    while std::time::Instant::now() < deadline {
+        if pad
+            .frames
+            .lock()
+            .unwrap()
+            .iter()
+            .skip(since)
+            .any(|frame| pred(frame))
+        {
+            return true;
+        }
+        std::thread::sleep(Duration::from_millis(10));
+    }
+    false
+}
+
 #[test]
 fn drives_the_virtual_pad() {
     let pad_server = FakePad::start();
     let mut host = Host::new("test", "127.0.0.1");
     host.pad_port = pad_server.port;
     let session = Ghostpad::connect(&host).expect("connect pad");
-    pad::press(&session, "cross").expect("press");
-    pad::analog(&session, "L", "up_right").expect("stick");
-    std::thread::sleep(Duration::from_millis(60));
-    let frames = pad_server.frames.lock().unwrap().clone();
-    assert!(!frames.is_empty(), "no frames reached the payload");
     let cross = godsend_core::pad::Button::parse("cross").unwrap().bit();
+    let circle = godsend_core::pad::Button::parse("circle").unwrap().bit();
+    let window = Duration::from_secs(3);
+    let limit = pad_server.frames.lock().unwrap().len();
+
+    pad::press(&session, "cross").expect("press");
     assert!(
-        frames.iter().any(|f| u32::from_be_bytes([f[4], f[5], f[6], f[7]]) & cross != 0),
+        wait_for_frame(&pad_server, limit, window, |frame| frame_mask(frame) & cross != 0),
         "cross was never held"
     );
+
+    let limit = pad_server.frames.lock().unwrap().len();
+    pad::analog(&session, "L", "up_right").expect("stick");
     assert!(
-        frames.iter().any(|f| f[8] == 255 && f[9] == 0),
+        wait_for_frame(&pad_server, limit, window, |frame| frame[8] == 255 && frame[9] == 0),
         "stick never reached up_right"
     );
+
     // Releasing one button leaves the other held.
     pad::hold(&session, "cross").expect("hold cross");
     pad::hold(&session, "circle").expect("hold circle");
-    std::thread::sleep(Duration::from_millis(40));
+    let limit = pad_server.frames.lock().unwrap().len();
     pad::release_button(&session, "cross").expect("release cross");
-    std::thread::sleep(Duration::from_millis(40));
-    let mask = pad_server
-        .frames
-        .lock()
-        .unwrap()
-        .last()
-        .map(|f| u32::from_be_bytes([f[4], f[5], f[6], f[7]]))
-        .unwrap_or(0);
-    let circle = godsend_core::pad::Button::parse("circle").unwrap().bit();
-    assert_eq!(mask & cross, 0, "cross should be lifted");
-    assert_eq!(mask & circle, circle, "circle should still be held");
+    assert!(
+        wait_for_frame(&pad_server, limit, window, |frame| {
+            frame_mask(frame) & circle == circle && frame_mask(frame) & cross == 0
+        }),
+        "cross should be lifted and circle held"
+    );
 
+    let limit = pad_server.frames.lock().unwrap().len();
     drop(session);
     // Dropping the session must send a neutral frame, or the payload keeps the
     // last button held.
-    std::thread::sleep(Duration::from_millis(80));
-    let last = *pad_server.frames.lock().unwrap().last().expect("frames");
-    assert_eq!(u32::from_be_bytes([last[4], last[5], last[6], last[7]]), 0);
-    assert_eq!(last[8], 128);
-    assert_eq!(last[9], 128);
+    assert!(
+        wait_for_frame(&pad_server, limit, window, |frame| {
+            frame_mask(frame) == 0 && frame[8] == 128 && frame[9] == 128
+        }),
+        "no neutral frame after disconnect"
+    );
 }
 
 #[test]
