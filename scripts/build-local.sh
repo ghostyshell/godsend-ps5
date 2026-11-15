@@ -41,7 +41,7 @@ cargo build --release -p godsend-ps5-cli
 tar -czf "$OUT/godsend-ps5-cli-macos-$NAME.tar.gz" -C target/release godsend-ps5
 
 echo "== app bundle"
-npm --prefix app run tauri build -- --bundles app
+(cd app && npx tauri build --bundles app)
 APP="target/release/bundle/macos/GODsend PS5.app"
 [ -d "$APP" ] || { echo "no app bundle at $APP" >&2; exit 1; }
 codesign --force --deep --sign - "$APP"
