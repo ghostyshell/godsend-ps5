@@ -20,7 +20,15 @@ Rust + Tauri stack of [GODsend PSP](https://github.com/ghostyshell/godsend-psp).
 <!-- downloads:start -->
 | Build | GoFile (primary) | file.kiwi (backup) | Size |
 | --- | --- | --- | --- |
-| pending | pending | pending | |
+| `godsend-ps5-0.1.0-linux-x64.AppImage` | [Download](https://gofile.io/d/ynq1vPGb) | [Mirror](https://file.kiwi/21f44106#N8RuNbjqAr7M0jsIoT52Ag) | 80.3 MiB |
+| `godsend-ps5-cli-0.1.0-linux-x64.tar.gz` | [Download](https://gofile.io/d/Ntlz1iJJ) | [Mirror](https://file.kiwi/8c2ee23c#bz-oXrjVV9JrQ7r239T1Vg) | 2.1 MiB |
+| `godsend-ps5-cli-0.1.0-macos-arm64.tar.gz` | [Download](https://gofile.io/d/RlzF3M4Y) | [Mirror](https://file.kiwi/81f34716#BZsFjv_cV55N5ggljqREfw) | 1.9 MiB |
+| `godsend-ps5-cli-0.1.0-macos-x64.tar.gz` | [Download](https://gofile.io/d/CTEyh203) | [Mirror](https://file.kiwi/fc7210a1#huxeErovQDZ8sYwa0W00Qg) | 2.0 MiB |
+| `godsend-ps5-cli-0.1.0-windows-x64.zip` | [Download](https://gofile.io/d/15CTnSGO) | [Mirror](https://file.kiwi/523cebb5#19vWks9-YMmnsDwMpIDNGA) | 2.1 MiB |
+| `godsend-ps5-0.1.0-linux-x64.deb` | [Download](https://gofile.io/d/agItpMAe) | [Mirror](https://file.kiwi/e9dd2309#yXduT7KQ7tfo902Tp9MS_w) | 5.5 MiB |
+| `godsend-ps5-0.1.0-arm64.dmg` | [Download](https://gofile.io/d/vKS7veXr) | [Mirror](https://file.kiwi/e21d15b1#QTlXaJ3jCXQdwgKI2HOOIg) | 5.5 MiB |
+| `godsend-ps5-0.1.0-x64.dmg` | [Download](https://gofile.io/d/QZA5a9Z2) | [Mirror](https://file.kiwi/c9ddc090#1HgjwwvbJS5O5vkFehj_eA) | 6.0 MiB |
+| `godsend-ps5-0.1.0-x64-setup.exe` | [Download](https://gofile.io/d/ios6vOzC) | [Mirror](https://file.kiwi/efd94b5b#U2p3e9SyQIg8jG1MN2nbjg) | 3.7 MiB |
 <!-- downloads:end -->
 
 GoFile is the primary host and file.kiwi is the encrypted backup, the same

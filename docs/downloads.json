@@ -1,0 +1,78 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-11-15",
+  "artifacts": [
+    {
+      "name": "godsend-ps5-0.1.0-linux-x64.AppImage",
+      "label": "Linux (x86_64, AppImage)",
+      "gofile": "https://gofile.io/d/ynq1vPGb",
+      "kiwi": "https://file.kiwi/21f44106#N8RuNbjqAr7M0jsIoT52Ag",
+      "size": "80.3 MiB",
+      "sha256": "32b191d14b38aa018d42670e3e3813f50d8e4dd72a802587c31c6798a1134438"
+    },
+    {
+      "name": "godsend-ps5-cli-0.1.0-linux-x64.tar.gz",
+      "label": "Linux (x86_64, CLI)",
+      "gofile": "https://gofile.io/d/Ntlz1iJJ",
+      "kiwi": "https://file.kiwi/8c2ee23c#bz-oXrjVV9JrQ7r239T1Vg",
+      "size": "2.1 MiB",
+      "sha256": "8fdccdc981b045122a271ae4db9edd0a6b08071d9d7e0b77849be9e20f08b5a0"
+    },
+    {
+      "name": "godsend-ps5-cli-0.1.0-macos-arm64.tar.gz",
+      "label": "macOS (Apple Silicon, CLI)",
+      "gofile": "https://gofile.io/d/RlzF3M4Y",
+      "kiwi": "https://file.kiwi/81f34716#BZsFjv_cV55N5ggljqREfw",
+      "size": "1.9 MiB",
+      "sha256": "d619499ddaa2dcb2134128ac8e05c006f0786d3aac2db796631b16a4afa33936"
+    },
+    {
+      "name": "godsend-ps5-cli-0.1.0-macos-x64.tar.gz",
+      "label": "macOS (Intel, CLI)",
+      "gofile": "https://gofile.io/d/CTEyh203",
+      "kiwi": "https://file.kiwi/fc7210a1#huxeErovQDZ8sYwa0W00Qg",
+      "size": "2.0 MiB",
+      "sha256": "fb9d791f17b182ef52ef171a21a3cdda02e88fae34e4ed9e74bb130e0e783a24"
+    },
+    {
+      "name": "godsend-ps5-cli-0.1.0-windows-x64.zip",
+      "label": "Windows (x86_64, CLI)",
+      "gofile": "https://gofile.io/d/15CTnSGO",
+      "kiwi": "https://file.kiwi/523cebb5#19vWks9-YMmnsDwMpIDNGA",
+      "size": "2.1 MiB",
+      "sha256": "e16e826fe50fc27f28ed1c30a6e86a5a82168e0cbc548fc7d106bcebf7c1719b"
+    },
+    {
+      "name": "godsend-ps5-0.1.0-linux-x64.deb",
+      "label": "Linux (x86_64, deb)",
+      "gofile": "https://gofile.io/d/agItpMAe",
+      "kiwi": "https://file.kiwi/e9dd2309#yXduT7KQ7tfo902Tp9MS_w",
+      "size": "5.5 MiB",
+      "sha256": "14387f3266f06fa06a4f79266b27f9d7f4f17191a828b6c6c30fc9d1d8b5b373"
+    },
+    {
+      "name": "godsend-ps5-0.1.0-arm64.dmg",
+      "label": "macOS (Apple Silicon)",
+      "gofile": "https://gofile.io/d/vKS7veXr",
+      "kiwi": "https://file.kiwi/e21d15b1#QTlXaJ3jCXQdwgKI2HOOIg",
+      "size": "5.5 MiB",
+      "sha256": "279f662244b436f0a44fbad1c978278b72c4ed9fd7801c4a8f72baeb9a088f73"
+    },
+    {
+      "name": "godsend-ps5-0.1.0-x64.dmg",
+      "label": "macOS (Intel)",
+      "gofile": "https://gofile.io/d/QZA5a9Z2",
+      "kiwi": "https://file.kiwi/c9ddc090#1HgjwwvbJS5O5vkFehj_eA",
+      "size": "6.0 MiB",
+      "sha256": "1985037693eb3b593985570741e91072e6ebbf5c8e0bf0b4abae9410e38e8362"
+    },
+    {
+      "name": "godsend-ps5-0.1.0-x64-setup.exe",
+      "label": "Windows (x86_64, installer)",
+      "gofile": "https://gofile.io/d/ios6vOzC",
+      "kiwi": "https://file.kiwi/efd94b5b#U2p3e9SyQIg8jG1MN2nbjg",
+      "size": "3.7 MiB",
+      "sha256": "e2dc7c613bb4ec83dacd9413176aeab1ebd4a30f52e0fb417f63c6ddc3d3f2e7"
+    }
+  ]
+}
