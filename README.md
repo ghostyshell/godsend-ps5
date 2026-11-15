@@ -10,8 +10,7 @@ the installed library, sends payloads to elfldr, drives the console with a
 virtual controller, downloads games and homebrew to your Mac or PC, converts
 what needs converting, and installs content back onto the console.
 
-GODsend PS5 shares the GODsend family's "midnight console" design and the
-Rust + Tauri stack of [GODsend PSP](https://github.com/ghostyshell/godsend-psp).
+Built with a Rust engine, Tauri 2 and React.
 
 ![Library](docs/site-library.png)
 
@@ -31,8 +30,8 @@ Rust + Tauri stack of [GODsend PSP](https://github.com/ghostyshell/godsend-psp).
 | `godsend-ps5-0.1.0-x64-setup.exe` | [Download](https://gofile.io/d/ios6vOzC) | [Mirror](https://file.kiwi/efd94b5b#U2p3e9SyQIg8jG1MN2nbjg) | 3.7 MiB |
 <!-- downloads:end -->
 
-GoFile is the primary host and file.kiwi is the encrypted backup, the same
-mirror pair as GODsend PSP and GODsend 360. Desktop builds are not notarized:
+GoFile is the primary host and file.kiwi is the encrypted backup. Desktop
+builds are not notarized:
 on first launch, right click the app, choose Open, then Open again, or run
 `xattr -dr com.apple.quarantine "/Applications/GODsend PS5.app"`.
 
