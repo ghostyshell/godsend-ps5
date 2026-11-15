@@ -52,7 +52,8 @@ the shell stays indigo and cyan.
 ## Shell layout
 
 ```
-topbar      62px (84px on macOS for the overlay title bar), drag region
+topbar      62px, 84px on macOS with padding-top 22px for the overlay title
+            bar (data-os="mac" set by main.tsx; never padding-left), drag region
 rail        236px nav, 10 sections, icon plus label, collapses under 1080px
 workspace   one scrolling page, content max width 980px
 inspector   fixed right column 300px: console card plus job queue, hidden
