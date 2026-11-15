@@ -121,6 +121,13 @@ npm --prefix app run build
 npm --prefix app run tauri build
 ```
 
+Release artifacts for this machine, without CI or Finder automation:
+
+```sh
+scripts/build-local.sh                    # tests, app, DMG, CLI -> dist/local
+scripts/publish-release.sh --artifacts dist
+```
+
 The CLI is `cargo build --release -p godsend-ps5-cli`; the binary is
 `godsend-ps5`. Run it with no arguments for the command list.
 
