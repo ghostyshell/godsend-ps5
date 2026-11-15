@@ -76,6 +76,16 @@ it, not just unit tests, when a flow changes.
 The dev server uses port 1465, not Vite's 1420, because sibling GODsend apps
 run on 1420 and the Playwright suite must test this app.
 
+### macOS overlay title bar
+
+The window uses `titleBarStyle: "Overlay"` with a hidden title, so content
+draws under the traffic lights. `app/src/main.tsx` sets
+`document.documentElement.dataset.os = "mac"` (only inside the real app, or
+with `?os=mac` for a preview). The stylesheet then uses an 84px topbar row
+with `padding-top: 22px`. Never use `padding-left: 84px`: that moves the brand
+to the right of the traffic lights. `?mock=1` previews have no traffic lights,
+so verify the inset in the built app.
+
 ## Releases and copy
 
 - Version lives in `Cargo.toml` (workspace), `app/package.json`,
