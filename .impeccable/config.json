@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-11-15T09:06:51.932Z",
         "reason": "GODsend design language: the landing page mirrors the app's DESIGN.md --glow-laser token and chromatic accent, inherited from the GODsend PSP and PS3 landing pages"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "/Users/akshat/Code/godsend-ps5/docs/index.html"
+        ],
+        "createdAt": "2026-11-15T09:27:31.087Z",
+        "reason": "GODsend family landing page pattern: the eyebrow above the hero is inherited from the GODsend PSP and PS3 sites and is part of the app's own design language, not a generated default"
       }
     ]
   }
