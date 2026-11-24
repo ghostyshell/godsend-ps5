@@ -72,8 +72,8 @@ Release builds run locally with `scripts/build-local.sh`: it runs the tests,
 builds the frontend, the CLI and the app bundle, ad-hoc signs it, and makes the
 DMG with `hdiutil` from a staging folder (no Finder automation). The result
 lands in `dist/local/`. `scripts/publish-release.sh --artifacts dist` uploads
-every artifact in that tree to GoFile and file.kiwi and rewrites the README
-table. Windows, Linux and Intel macOS bundles cannot be produced on an Apple
+every artifact in that tree to Cloudflare R2 and rewrites the README table and
+`docs/downloads.json`. Windows, Linux and Intel macOS bundles cannot be produced on an Apple
 Silicon Mac; the CI workflow builds those.
 
 The end-to-end core test, `core/tests/mock_device.rs`, runs a fake FTP server,

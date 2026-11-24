@@ -111,7 +111,7 @@
   </section>
 
   <h2 id="download">Download</h2>
-  <p class="sub">GoFile is the primary host and file.kiwi is the encrypted backup.</p>
+  <p class="sub">Builds are hosted on Cloudflare R2. A link stays valid until the app's next version.</p>
   <div class="downloads" id="latest-downloads" aria-live="polite">
     <span class="meta">Loading builds...</span>
   </div>
@@ -173,7 +173,7 @@ npm --prefix app run tauri build</pre>
       for (const artifact of data.artifacts) {
         const link = document.createElement("a");
         link.className = "btn";
-        link.href = artifact.gofile || artifact.kiwi || "#";
+        link.href = artifact.url || "#";
         link.textContent = artifact.label + (artifact.size ? " - " + artifact.size : "");
         wrap.appendChild(link);
       }
