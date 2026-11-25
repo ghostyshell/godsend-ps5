@@ -28,7 +28,7 @@
       radial-gradient(40rem 30rem at 50% 110%, rgba(242,192,120,.07), transparent 60%);
   }
   a { color: var(--laser-2); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a:hover, a:focus-visible { text-decoration: underline; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px 80px; }
   header { display: flex; align-items: center; gap: 12px; padding: 26px 0; }
   header img { width: 34px; height: 34px; object-fit: contain; }
@@ -42,7 +42,7 @@
   .lead { max-width: 700px; color: var(--dim); font-size: 17px; }
   .cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 26px 0 18px; }
   .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 11px 16px; font-weight: 600; }
-  .btn:hover { border-color: rgba(109,139,255,.5); text-decoration: none; }
+  .btn:hover, .btn:focus-visible { border-color: rgba(109,139,255,.5); text-decoration: none; }
   .btn.primary { background: var(--grad); color: #05070c; border: none; box-shadow: 0 12px 34px -14px rgba(109,139,255,.65); }
   .chips { display: flex; gap: 8px; flex-wrap: wrap; }
   .chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font: 12px var(--mono); color: var(--dim); }
@@ -65,6 +65,8 @@
   th { font: 11px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
   footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; display: flex; gap: 12px; flex-wrap: wrap; }
   footer .grow { flex: 1; }
+  a:focus-visible, .btn:focus-visible, .lb-btn:focus-visible { outline: 2px solid var(--laser-2); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } .shot img { transform: none !important; } }
 </style>
 </head>
 <body>

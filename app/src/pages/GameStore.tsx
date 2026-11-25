@@ -84,6 +84,7 @@ export default function GameStore({ toast, reload, go }: PageProps) {
           <input
             type="text"
             className="search"
+            aria-label="Search games"
             placeholder={source === "ia" ? "PS5 game, dump, homebrew" : "Game title"}
             value={query}
             onChange={(e) => setQuery(e.target.value)}

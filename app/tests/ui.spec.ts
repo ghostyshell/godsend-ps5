@@ -84,3 +84,10 @@ test("devices page exposes the service ports", async ({ page }) => {
   await expect(page.getByText("Ghostpad port")).toBeVisible();
   await expect(page.getByText("Payload loader port")).toBeVisible();
 });
+
+test("unslop-anything a11y pass: search inputs have accessible names", async ({ page }) => {
+  await page.getByRole("button", { name: "Library", exact: true }).click();
+  await expect(page.getByRole("textbox", { name: "Filter by title" })).toBeVisible();
+  await page.getByRole("button", { name: "Game Index" }).click();
+  await expect(page.getByRole("textbox", { name: "Search games" })).toBeVisible();
+});

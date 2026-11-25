@@ -61,6 +61,7 @@ export default function Payloads({ snap, toast, reload, refreshKey }: PageProps)
           <input
             className="search"
             type="text"
+            aria-label="Filter payloads"
             placeholder="Filter"
             value={query}
             onChange={(e) => setQuery(e.target.value)}

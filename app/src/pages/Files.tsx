@@ -118,7 +118,15 @@ export default function Files({ snap, toast, reload }: PageProps) {
                   <div
                     className="row"
                     key={entry.path}
+                    tabIndex={0}
+                    aria-current={selectedLocal === entry.path}
                     onClick={() => setSelectedLocal(entry.path)}
+                    onKeyDown={(e) => {
+                      if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+                        e.preventDefault();
+                        setSelectedLocal(entry.path);
+                      }
+                    }}
                     style={selectedLocal === entry.path ? { borderColor: "var(--line-laser)" } : undefined}
                   >
                     <div>
@@ -196,7 +204,15 @@ export default function Files({ snap, toast, reload }: PageProps) {
                   <div
                     className="row"
                     key={entry.path}
+                    tabIndex={0}
+                    aria-current={selectedRemote === entry.path}
                     onClick={() => setSelectedRemote(entry.path)}
+                    onKeyDown={(e) => {
+                      if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) {
+                        e.preventDefault();
+                        setSelectedRemote(entry.path);
+                      }
+                    }}
                     style={selectedRemote === entry.path ? { borderColor: "var(--line-laser)" } : undefined}
                   >
                     <div>
