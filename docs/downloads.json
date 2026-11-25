@@ -1,69 +1,69 @@
 {
-  "version": "0.1.0",
-  "updated": "2026-11-24",
+  "version": "0.1.1",
+  "updated": "2026-11-25",
   "artifacts": [
     {
-      "name": "godsend-ps5-0.1.0-arm64.dmg",
+      "name": "godsend-ps5-0.1.1-arm64.dmg",
       "label": "macOS (Apple Silicon)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-0.1.0-arm64.dmg",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-0.1.1-arm64.dmg",
       "size": "5.5 MiB",
-      "sha256": "bece71265acf3b7eb02b126d25fe20bb81da22955fbde7cb6c0ca5674c9a026e"
+      "sha256": "2b27c5b0ec11afc3326dd3697c57b6ad632ed878d07bb55f05b1480caa28b6a7"
     },
     {
-      "name": "godsend-ps5-0.1.0-x64.dmg",
+      "name": "godsend-ps5-0.1.1-x64.dmg",
       "label": "macOS (Intel)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-0.1.0-x64.dmg",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-0.1.1-x64.dmg",
       "size": "6.0 MiB",
-      "sha256": "a6ab15bf744ae27d11e8c25ddebfc4321924c80e554b59cf2ff553a7970e9520"
+      "sha256": "fa3d2b1e1e3205e58d976a04c1a77e54404f1536a42e35ee48f4644bbc107c49"
     },
     {
-      "name": "godsend-ps5-0.1.0-x64-setup.exe",
+      "name": "godsend-ps5-0.1.1-x64-setup.exe",
       "label": "Windows (x86_64, installer)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-0.1.0-x64-setup.exe",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-0.1.1-x64-setup.exe",
       "size": "3.7 MiB",
-      "sha256": "27154f6f59f4ce9feba5584f2ccfeed1e1ba7ea1af84c50be25a9228a64ab2b7"
+      "sha256": "625c58c61ff7decf37b68c47fe7864d4e29b14f829bfd08741363c3585804983"
     },
     {
-      "name": "godsend-ps5-0.1.0-linux-x64.AppImage",
+      "name": "godsend-ps5-0.1.1-linux-x64.AppImage",
       "label": "Linux (x86_64, AppImage)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-0.1.0-linux-x64.AppImage",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-0.1.1-linux-x64.AppImage",
       "size": "80.3 MiB",
-      "sha256": "49bf4fcdaa9987a7bb6559ea6b6caf244f92a7eb28380ddd3065d84e8885fb0f"
+      "sha256": "fcd94abf1274e1332d7ad0b328e3fbb93b6a8e2f6f1b6cb40a275f75e9c37cf3"
     },
     {
-      "name": "godsend-ps5-0.1.0-linux-x64.deb",
+      "name": "godsend-ps5-0.1.1-linux-x64.deb",
       "label": "Linux (x86_64, deb)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-0.1.0-linux-x64.deb",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-0.1.1-linux-x64.deb",
       "size": "5.5 MiB",
-      "sha256": "f1a5f4d96e9d1f65c6d7b15e7faf402b95f5a223daf1903389c41c4b85b365ad"
+      "sha256": "eb1ce94395027798d49b661ad652dec3903152adacbca3fd3b81cf7afc0b0158"
     },
     {
-      "name": "godsend-ps5-cli-0.1.0-linux-x64.tar.gz",
+      "name": "godsend-ps5-cli-0.1.1-linux-x64.tar.gz",
       "label": "Linux (x86_64, CLI)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-cli-0.1.0-linux-x64.tar.gz",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-cli-0.1.1-linux-x64.tar.gz",
       "size": "2.1 MiB",
-      "sha256": "39eaf4fd7a917f0e1362cd9e92f039440cb40881131250799e683b5e84649586"
+      "sha256": "92a70bcf6b0f1bd7e428eb568e4f4fb950326f326be0f6f050ca860a0dd993f3"
     },
     {
-      "name": "godsend-ps5-cli-0.1.0-macos-arm64.tar.gz",
+      "name": "godsend-ps5-cli-0.1.1-macos-arm64.tar.gz",
       "label": "macOS (Apple Silicon, CLI)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-cli-0.1.0-macos-arm64.tar.gz",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-cli-0.1.1-macos-arm64.tar.gz",
       "size": "1.9 MiB",
-      "sha256": "1ba81b44f7ab742340cb9f2822e522e44d027c2ebd3809468937e12a647c00a6"
+      "sha256": "a97aae3ef618fffa53d5f75e190e8b881a0ac93b21794d07dbfd474a96ee90ab"
     },
     {
-      "name": "godsend-ps5-cli-0.1.0-macos-x64.tar.gz",
+      "name": "godsend-ps5-cli-0.1.1-macos-x64.tar.gz",
       "label": "macOS (Intel, CLI)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-cli-0.1.0-macos-x64.tar.gz",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-cli-0.1.1-macos-x64.tar.gz",
       "size": "2.0 MiB",
-      "sha256": "60681b6eece67a253961d61326e2be54e588a0f5587939255aa0c67baaf53124"
+      "sha256": "60ee6e3d357c0e60730e1c810b3954ba777bf66a5f2ea3caf28ce873c97f8fc5"
     },
     {
-      "name": "godsend-ps5-cli-0.1.0-windows-x64.zip",
+      "name": "godsend-ps5-cli-0.1.1-windows-x64.zip",
       "label": "Windows (x86_64, CLI)",
-      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.0/godsend-ps5-cli-0.1.0-windows-x64.zip",
+      "url": "https://covers.debrid.in/godsend-ps5/releases/0.1.1/godsend-ps5-cli-0.1.1-windows-x64.zip",
       "size": "2.1 MiB",
-      "sha256": "33ff0c33e5162284c5cdc3922a818b9624c13a0c3368eaeb0a58cbc8292e2b96"
+      "sha256": "63f581609b5357bdbb61fff9e1b4b2fadcba2445ca81a13644fe5fb09ddc9862"
     }
   ]
 }
