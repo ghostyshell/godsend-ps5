@@ -1422,7 +1422,7 @@ dependencies = [
 
 [[package]]
 name = "godsend-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "directories",
  "fs4",
@@ -1438,7 +1438,7 @@ dependencies = [
 
 [[package]]
 name = "godsend-ps5-app"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "base64 0.22.1",
  "godsend-core",
@@ -1455,7 +1455,7 @@ dependencies = [
 
 [[package]]
 name = "godsend-ps5-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "godsend-core",
 ]

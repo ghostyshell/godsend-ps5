@@ -190,7 +190,7 @@ export default function Settings({ snap, toast, reload }: PageProps) {
             <div>
               <div className="title">GODsend PS5</div>
               <div className="sub mono">
-                v0.1.0 - {snap.hosts.length} console{snap.hosts.length === 1 ? "" : "s"} configured
+                v0.1.1 - {snap.hosts.length} console{snap.hosts.length === 1 ? "" : "s"} configured
               </div>
             </div>
           </div>
